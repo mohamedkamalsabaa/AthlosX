@@ -1,79 +1,58 @@
 # AthlosX
-# AI-Powered Sports Strategy & Performance Monitoring System
+# AthlosX - وثائق بنية الملفات
 
-## 📌 Project Description
+هذه الصفحة توضح بنية الملفات لمشروع **AthlosX**، وهو مشروع متعدد الأقسام يهدف إلى توقع نتائج المباريات باستخدام الذكاء الاصطناعي.
 
-This project is an **AI-powered toolkit** designed to enhance gameplay strategies and provide **comprehensive performance monitoring** for coaches and analysts. It aims to significantly reduce manual analysis time, optimize player development, and ensure both **physical and mental well-being** of athletes.
+## مجلد `docs`
 
-By leveraging smart tools for data analysis and decision-making, this system supports the goals of **Saudi Vision 2030** in developing the sports sector, and serves as a key enabler for **World Cup 2034** success through empowering sports professionals with modern, intelligent solutions.
+يحتوي على ملفات التوثيق للمشروع، بما في ذلك هذا الملف:
 
----
+- `index.html`: صفحة التوثيق الرئيسية التي تصف بنية الملفات.
 
-## ⚙️ Key Features
+## مجلدات المشروع الرئيسية
 
-- Predictive Engine for game strategy optimization.
-- Smart performance tracking.
-- Player health & wellness monitoring.
-- AI-generated insights and strategy suggestions.
-- Coach/analyst-friendly interactive interface.
+### 1. `athlosx-fullstack`
 
----
+يحتوي على نظام لارافيل كامل لتطوير تطبيقات الواجهة الأمامية والخلفية.
 
-## 🚧 Current Challenges
+- نظام لارافيل الكامل مع ملفات PHP، قواعد البيانات، والواجهات.
 
-1. **Lack of Real-World Data**  
-   The current model was trained using synthetic data due to time limitations, affecting result accuracy and delaying the integration of other system tools.
+### 2. `backend-services-ai`
 
-2. **Computational Limitations**  
-   Training advanced models requires high computational power and specialized storage for visual and biometric data, which are currently unavailable.
+يحتوي على خدمات الخلفية المرتبطة بالذكاء الاصطناعي.
 
-3. **Absence of Video/Biometric Analytics**  
-   Some core tools (e.g., performance tracking modules) rely on non-textual data formats (e.g., video, biometrics), which have not been processed yet.
+- `api.py`: ملف FastAPI لتوفير واجهة برمجة تطبيقات لتوقع نتائج المباريات باستخدام نموذج مدرب.
+- `match_predictor_model.pkl`: ملف النموذج المدرب باستخدام RandomForestClassifier.
+- `matches.csv`: ملف بيانات المباريات (حقيقية أو وهمية) يحتوي على إحصائيات مثل التسديدات، الحيازة، والنتائج.
+- `Procfile`: ملف لتحديد كيفية تشغيل التطبيق على خادم (مثل Heroku)، يحتوي على الأمر:  
+  `web: uvicorn api:app --host=0.0.0.0 --port=$PORT`
+- `requirements.txt`: يحتوي على متطلبات Python التالية:
+  - `fastapi`
+  - `uvicorn`
+  - `pandas`
+  - `numpy`
+  - `joblib`
 
----
+### 3. `model-ai`
 
-## 💡 We Need Support In
+يحتوي على ملفات تدريب نموذج الذكاء الاصطناعي وبيانات وهمية.
 
-- **Accessing Authentic Datasets**  
-  Through paid APIs or partnerships with official sources (e.g., sports federations, clubs).
+- ملف تدريب النموذج (غير مسمى بشكل محدد ولكن يحتوي على الكود التالي):
+  - استيراد مكتبات مثل `pandas`, `numpy`, `sklearn`, `mlflow`, و`joblib`.
+  - استخدام `RandomForestClassifier` لتدريب نموذج التنبؤ.
+  - تسجيل التجارب باستخدام `mlflow` على Dagshub.
+  - حفظ النموذج في `match_predictor_model.pkl`.
 
-- **Computing Resources**  
-  Provision of GPU-powered servers or cloud environments to accelerate model training and deployment.
+- ملف توليد البيانات الوهمية (غير مسمى بشكل محدد ولكن يحتوي على الكود التالي):
+  - توليد 1000 مباراة وهمية باستخدام فرق عشوائية وإحصائيات مثل التسديدات والحيازة.
+  - حفظ البيانات في `matches.csv`.
 
-- **Expert Consultation**  
-  From professionals in sports analytics to help fine-tune outputs and ensure tools align with actual team needs.
+- `match_predictor_model.pkl`: النموذج المدرب الناتج عن التدريب.
+- `matches.csv`: ملف البيانات الوهمية الناتج عن التوليد.
 
----
+## ملاحظات
 
-## 📈 Upcoming Milestones (Next 2 Weeks)
+- مجلد `backend-services-ai` يعتمد على `match_predictor_model.pkl` و`matches.csv` من `model-ai`.  
+- يمكن تشغيل الـ API باستخدام الأمر: `uvicorn api:app --host 127.0.0.1 --port 8001`.  
+- المشروع يجمع بين لارافيل للواجهة الأمامية وFastAPI لخدمات الذكاء الاصطناعي.
 
-1. **Improve Prediction Engine Accuracy**  
-   By integrating more contextual features and refining core algorithms.
-
-2. **Start Real Data Acquisition**  
-   Using an official API and developing scripts for data cleaning and preprocessing.
-
-3. **Build an Interactive UI**  
-   For displaying results in a clear, intuitive format tailored to coaches and analysts.
-
-4. **Explore Advanced Tools**  
-   Such as explainable AI and progressive integration into the system.
-
----
-
-## 🏁 MVP Target
-
-Achieve **70% system readiness**, including:
-- Data environment setup.
-- Core model performance improvements.
-- Usable and testable MVP interface for demonstration and feedback.
-
----
-
-## 🤝 Contributing
-
-Interested in contributing? Whether you’re a developer, data scientist, or sports analytics expert — we’d love to collaborate. Please reach out to discuss opportunities.
-
----
-
-> “Empowering teams with AI to win smarter, safer, and stronger.”
