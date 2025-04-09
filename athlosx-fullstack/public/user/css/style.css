@@ -1,0 +1,42 @@
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #000000; /* لون الخلفية */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #454ad5; /* لون الشريط */
+    transition: .4s;
+    border-radius: 2px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #5358d4; /* لون عند التمرير */
+    transition: .4s;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(31deg, #212121f0, #494cad40);
+}
+
+main{
+    color: #fff !important;
+    background-color: #252424 !important;
+    background: linear-gradient(0deg, #545bff24, #252424);
+}
+
+.topnav{
+    background-color: #252424;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.avatar-md img {
+    width: 78px !important;
+}
+
+.dropdown-item {
+    text-align: right !important;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AthlosX - وثائق بنية الملفات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        ul {
+            list-style-type: none;
+            padding-right: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AthlosX - وثائق بنية الملفات</h1>
+        <p>هذه الصفحة توضح بنية الملفات لمشروع <strong>AthlosX</strong>، وهو مشروع متعدد الأقسام يهدف إلى توقع نتائج المباريات باستخدام الذكاء الاصطناعي.</p>
+
+        <h2>مجلد <code>docs</code></h2>
+        <p>يحتوي على ملفات التوثيق للمشروع، بما في ذلك هذا الملف:</p>
+        <ul>
+            <li><code>index.html</code>: صفحة التوثيق الرئيسية التي تصف بنية الملفات.</li>
+        </ul>
+
+        <h2>مجلدات المشروع الرئيسية</h2>
+
+        <h3>1. <code>athlosx-fullstack</code></h3>
+        <p>يحتوي على نظام لارافيل كامل لتطوير تطبيقات الواجهة الأمامية والخلفية.</p>
+        <ul>
+            <li>نظام لارافيل الكامل مع ملفات PHP، قواعد البيانات، والواجهات.</li>
+        </ul>
+
+        <h3>2. <code>backend-services-ai</code></h3>
+        <p>يحتوي على خدمات الخلفية المرتبطة بالذكاء الاصطناعي.</p>
+        <ul>
+            <li><code>api.py</code>: ملف FastAPI لتوفير واجهة برمجة تطبيقات لتوقع نتائج المباريات باستخدام نموذج مدرب.</li>
+            <li><code>match_predictor_model.pkl</code>: ملف النموذج المدرب باستخدام RandomForestClassifier.</li>
+            <li><code>matches.csv</code>: ملف بيانات المباريات (حقيقية أو وهمية) يحتوي على إحصائيات مثل التسديدات، الحيازة، والنتائج.</li>
+            <li><code>Procfile</code>: ملف لتحديد كيفية تشغيل التطبيق على خادم (مثل Heroku)، يحتوي على الأمر: <code>web: uvicorn api:app --host=0.0.0.0 --port=$PORT</code>.</li>
+            <li><code>requirements.txt</code>: يحتوي على متطلبات Python التالية:
+                <ul>
+                    <li><code>fastapi</code></li>
+                    <li><code>uvicorn</code></li>
+                    <li><code>pandas</code></li>
+                    <li><code>numpy</code></li>
+                    <li><code>joblib</code></li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>3. <code>model-ai</code></h3>
+        <p>يحتوي على ملفات تدريب نموذج الذكاء الاصطناعي وبيانات وهمية.</p>
+        <ul>
+            <li>ملف تدريب النموذج (غير مسمى بشكل محدد ولكن يحتوي على الكود التالي):
+                <ul>
+                    <li>استيراد مكتبات مثل <code>pandas</code>, <code>numpy</code>, <code>sklearn</code>, <code>mlflow</code>, و<code>joblib</code>.</li>
+                    <li>استخدام <code>RandomForestClassifier</code> لتدريب نموذج التنبؤ.</li>
+                    <li>تسجيل التجارب باستخدام <code>mlflow</code> على Dagshub.</li>
+                    <li>حفظ النموذج في <code>match_predictor_model.pkl</code>.</li>
+                </ul>
+            </li>
+            <li>ملف توليد البيانات الوهمية (غير مسمى بشكل محدد ولكن يحتوي على الكود التالي):
+                <ul>
+                    <li>توليد 1000 مباراة وهمية باستخدام فرق عشوائية وإحصائيات مثل التسديدات والحيازة.</li>
+                    <li>حفظ البيانات في <code>matches.csv</code>.</li>
+                </ul>
+            </li>
+            <li><code>match_predictor_model.pkl</code>: النموذج المدرب الناتج عن التدريب.</li>
+            <li><code>matches.csv</code>: ملف البيانات الوهمية الناتج عن التوليد.</li>
+        </ul>
+
+        <h2>ملاحظات</h2>
+        <p>
+            - مجلد <code>backend-services-ai</code> يعتمد على <code>match_predictor_model.pkl</code> و<code>matches.csv</code> من <code>model-ai</code>.<br>
+            - يمكن تشغيل الـ API باستخدام الأمر: <code>uvicorn api:app --host 127.0.0.1 --port 8001</code>.<br>
+            - المشروع يجمع بين لارافيل للواجهة الأمامية وFastAPI لخدمات الذكاء الاصطناعي.
+        </p>
+    </div>
+</body>
+</html>
