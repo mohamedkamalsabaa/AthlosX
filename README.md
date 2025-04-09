@@ -70,3 +70,14 @@
 ## 🚀 دعنا نبدأ
 
 📥 قم بتنزيل المشروع وتابع الدليل أدناه لتشغيله على جهازك الخاص. استمتع ببناء الاستراتيجيات الذكية! 🌟
+
+---
+
+## 💻 اللغات والتقنيات المستخدمة
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Laravel](https://img.shields.io/badge/Laravel-EF4135?style=for-the-badge&logo=laravel&logoColor=white)
+![RandomForestClassifier](https://img.shields.io/badge/RandomForest-228B22?style=for-the-badge&logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-003B57?style=for-the-badge&logo=sql&logoColor=white)
+![Joblib](https://img.shields.io/badge/Joblib-1E6DB2?style=for-the-badge&logo=python&logoColor=white)
